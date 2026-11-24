@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" data-mode="{{ look.mode }}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Profile · Hydra</title>
+<style>
+{{ css }}{{ look_css }}</style></head><body>
+<main id="profile"><form class="card" id="form" autocomplete="off">
+<div class="top">
+<button type="button" id="portrait" aria-label="Portrait"></button><input type="file" id="file" accept="image/png,image/jpeg,image/gif,image/webp" hidden>
+<div class="who">
+<div class="line"><input id="name" aria-label="Name" maxlength="80"></div>
+<div class="line"><div class="at"><input id="handle" aria-label="Handle" maxlength="40" spellcheck="false"></div></div>
+<div class="code"><b id="code"></b><button type="button" class="ib s ghost" id="reroll" aria-label="Re-roll" title="Re-roll"></button></div>
+</div></div>
+<section><h2>Bio</h2><textarea id="bio" aria-label="Bio" maxlength="500"></textarea></section>
+<section><h2>Fields</h2><div id="fields"></div><button type="button" class="add" id="add"></button></section>
+<div class="bar"><span id="err" role="alert"></span><span class="grow"></span><button type="submit" id="save" disabled>Save</button></div>
+</form></main>
+<script type="application/json" id="boot">{{ boot|tojson }}</script>
+<script>
+{{ js }}</script></body></html>

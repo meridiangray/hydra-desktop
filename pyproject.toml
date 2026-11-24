@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-hydra-desktop"
+version = "0.1.0"
+description = "Hydra's desktop app: a Saucer window over a hydra archive's wiki, with its welcome screen, New project, Save and Profile"
+readme = "README.md"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE"]
+authors = [{ name = "Meridian Gray", email = "gray.crested645@passfwd.com" }]
+requires-python = ">=3.11"
+# open-hydra is not on PyPI: install it from https://github.com/meridiangray/open-hydra alongside this (see README)
+dependencies = ["open-hydra"]
+
+[project.scripts]
+hydra-desktop = "hydra_desktop.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+hydra_desktop = [
+    "pages/**/*",                                            # the welcome screen and Profile page (templating.for_package)
+    "chrome.js",                                             # the window bar's extras (Save), served at /_desktop/chrome-ext.js
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+extend-exclude = ["build", "dist"]
+
+[tool.ruff.lint]
+# lint only, no reformat yet (hydra-docs plans/imports.md §6), as hydra and hydra-mcp
+select = ["F", "E9", "W605"]

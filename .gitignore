@@ -1,0 +1,12 @@
+# hydra-desktop
+
+# the window shell's CMake builds
+shell/build/
+shell/build-*/
+
+# Python
+__pycache__/
+.pytest_cache/
+
+# built packages and the portable bundle (scripts/bundle_desktop.py)
+dist/
